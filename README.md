@@ -6,7 +6,7 @@ The following environmental variables must be populated, when running container
 
 - DEPOT_USER,
 - DEPOT_PASSWORD
-- SICKBEARD_API_KEY
+- COUCHPOTATO_API_KEY
 - PUSHOVER_USER_KEY
 
 # Ports
