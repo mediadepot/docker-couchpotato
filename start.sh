@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-if [ ! -f /srv/couchpotato/config/config.ini ]; then
+if [ ! -f /srv/couchpotato/config/couchpotato.cfg ]; then
 	#generate the config file for the first time using docker-gen
 
 	cheetah fill --oext cfg --env /srv/couchpotato/config/couchpotato
