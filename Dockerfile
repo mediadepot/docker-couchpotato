@@ -24,7 +24,7 @@ RUN git clone https://github.com/RuudBurger/CouchPotatoServer.git /srv/couchpota
 #Copy over start script and docker-gen files
 ADD ./start.sh /srv/start.sh
 RUN chmod u+x  /srv/start.sh
-ADD ./template/couchpotato.tmpl /src/couchpotato/config/couchpotato.tmpl
+ADD ./template/couchpotato.tmpl /srv/couchpotato/config/couchpotato.tmpl
 
 VOLUME ["/srv/couchpotato/app", "/srv/couchpotato/config", "/srv/couchpotato/data"]
 
