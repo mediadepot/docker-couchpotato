@@ -10,7 +10,7 @@ url_base =
 debug = 0
 launch_browser = False
 password = $DEPOT_PASSWORD
-port = $COUCHPOTATO_LISTEN_PORT
+port = 8081
 permission_file = 0755
 show_wizard = 0
 ipv6 = 0
@@ -39,15 +39,15 @@ ignored_genres =
 startup_scan = True
 cleanup = True
 enabled = 1
-library = /mnt/samba/movies/
+library = /mnt/movies/
 library_refresh_interval = 2
 
 [renamer]
 nfo_name = <filename>.orig.<ext>
-from = /mnt/samba/downloads/[Movies]
+from = /mnt/downloads/
 force_every = 2
 move_leftover = False
-to = /mnt/samba/movies/
+to = /mnt/movies/
 file_name = <thename><cd>.<ext>
 enabled = 0
 next_on_failed = True
@@ -79,7 +79,7 @@ name = <filename>-trailer
 [download_providers]
 
 [blackhole]
-directory = /mnt/samba/blackhole/[Movies]
+directory = /mnt/blackhole
 manual = 0
 enabled = 1
 create_subdir = 0
@@ -233,7 +233,7 @@ on_snatch = 0
 [plex]
 on_snatch = 1
 clients =
-enabled = 1
+enabled = 0
 media_server = localhost
 username =
 auth_token =
