@@ -19,7 +19,7 @@ The following volumes must be mapped, when running container
 
 - /srv/couchpotato/config
 - /srv/couchpotato/data
-- /mnt/tvshows
+- /mnt/movies
 - /mnt/downloads/[Movies]:/mnt/downloads
 - /mnt/blackhole/[Movies]:/mnt/blackhole
 
