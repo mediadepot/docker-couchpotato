@@ -6,7 +6,6 @@
     "PortBindings":{ "8080/tcp": [{ "HostIp": "0.0.0.0", "HostPort": "18080" }] }
   },
   "Env": [
-    "COUCHPOTATO_LISTEN_PORT=8080",
     "DEPOT_USER=depot",
     "DEPOT_PASSWORD=depot",
     "COUCHPOTATO_API_KEY=dhelmet",

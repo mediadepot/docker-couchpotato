@@ -7,8 +7,8 @@ RUN groupadd -g 15000 -r depot && useradd --uid 15000 -r -g depot depot
 #Install base applications + deps
 RUN echo "deb http://http.us.debian.org/debian stable main contrib non-free" | tee -a /etc/apt/sources.list
 RUN apt-get -q update && \
-    apt-get install -qy --force-yes python-cheetah python-openssl python-pip build-essential python-dev libffi-dev libssl-dev unrar curl && \
-    pip install --upgrade cryptography pyopenssl ndg-httpsclient pyasn1 && \
+    apt-get install -qy --force-yes git-core libffi-dev libssl-dev python python-cherrypy python-dev python-lxml python-pip python-cheetah unrar unzip curl && \
+    pip install pyopenssl ndg-httpsclient && \
     apt-get -y autoremove && \
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/* && \
