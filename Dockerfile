@@ -9,7 +9,7 @@ RUN echo "deb http://http.us.debian.org/debian stable main contrib non-free" | t
 RUN apt-get -q update && \
     apt-get install -qy --force-yes git-core libffi-dev libssl-dev python python-cherrypy python-dev python-lxml python-pip python-cheetah unrar unzip curl && \
     pip install pyopenssl ndg-httpsclient && \
-    apt-get -y autoremove && \
+    apt-get -y autoremove  && \
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
