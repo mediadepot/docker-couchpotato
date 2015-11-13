@@ -22,4 +22,3 @@ The following volumes must be mapped, when running container
 - /mnt/movies
 - /mnt/downloads/[Movies]:/mnt/downloads
 - /mnt/blackhole/[Movies]:/mnt/blackhole
-
