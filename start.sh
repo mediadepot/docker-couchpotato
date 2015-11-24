@@ -2,7 +2,8 @@
 if [ ! -f /srv/couchpotato/config/couchpotato.cfg ]; then
 	#generate the config file for the first time using docker-gen
 
-	cheetah fill --oext cfg --env /srv/couchpotato/config/couchpotato
+	cheetah fill --oext cfg --env /srv/couchpotato/tmpl/couchpotato
+	mv /srv/couchpotato/tmpl/couchpotato.cfg /srv/couchpotato/config/couchpotato.cfg
 	chown -R depot:depot /srv/couchpotato
 fi
 
