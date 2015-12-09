@@ -1,0 +1,4 @@
+[template]
+src = "couchpotato.cfg.tmpl"
+dest = "/srv/couchpotato/config/couchpotato.cfg"
+keys = []

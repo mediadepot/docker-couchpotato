@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 if [ ! -f /srv/couchpotato/config/couchpotato.cfg ]; then
-	#generate the config file for the first time using docker-gen
+	#generate the config file for the first time using conf.d
 
-	cheetah fill --oext cfg --env /srv/couchpotato/tmpl/couchpotato
-	mv /srv/couchpotato/tmpl/couchpotato.cfg /srv/couchpotato/config/couchpotato.cfg
+	confd -onetime -backend rancher -prefix /2015-07-25
 	chown -R depot:depot /srv/couchpotato
 fi
 

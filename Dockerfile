@@ -14,11 +14,16 @@ RUN apt-get -q update && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
 
+#Create confd folder structure
+RUN curl -L -o /usr/local/bin/confd https://github.com/kelseyhightower/confd/releases/download/v0.11.0/confd-linux-amd64
+RUN chmod u+x  /usr/local/bin/confd
+ADD ./conf.d /etc/confd/conf.d
+ADD ./templates /etc/confd/templates
+
 #Create couchpotato folder structure & set as volumes
 RUN mkdir -p /srv/couchpotato/app && \
 	mkdir -p /srv/couchpotato/config && \
-	mkdir -p /srv/couchpotato/data && \
-	mkdir -p /srv/couchpotato/tmpl
+	mkdir -p /srv/couchpotato/data
 
 
 #Install Couchpotato
@@ -28,10 +33,9 @@ RUN git clone https://github.com/RuudBurger/CouchPotatoServer.git /srv/couchpota
 #Copy over start script and docker-gen files
 ADD ./start.sh /srv/start.sh
 RUN chmod u+x  /srv/start.sh
-ADD ./template/couchpotato.tmpl /srv/couchpotato/tmpl/couchpotato.tmpl
 
 VOLUME ["/srv/couchpotato/app", "/srv/couchpotato/config", "/srv/couchpotato/data"]
 
-EXPOSE 8081
+EXPOSE 8080
 
 CMD ["/srv/start.sh"]

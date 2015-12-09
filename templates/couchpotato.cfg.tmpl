@@ -1,16 +1,16 @@
 [core]
-username = $DEPOT_USER
+username = {{getv "/self/host/labels/depot.user"}}
 ssl_key =
 ssl_cert =
 data_dir =
 permission_folder = 0755
-api_key = $COUCHPOTATO_API_KEY
+api_key = {{getv "/self/host/labels/depot.couchpotato.api_key"}}
 development = 0
 url_base =
 debug = 0
 launch_browser = False
-password = $DEPOT_PASSWORD
-port = 8081
+password = {{getv "/self/host/labels/depot.password"}}
+port = 8080
 permission_file = 0755
 show_wizard = 0
 ipv6 = 0
@@ -261,7 +261,7 @@ channels =
 
 [pushover]
 priority = 0
-user_key = $PUSHOVER_USER_KEY
+user_key = {{getv "/self/host/labels/depot.pushover.api_key"}}
 on_snatch = 1
 enabled = 1
 sound =
