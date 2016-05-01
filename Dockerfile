@@ -8,7 +8,7 @@ RUN mkdir -p /srv/couchpotato/app && \
 WORKDIR /srv/couchpotato/app
 
 # Install permanent apk packages
-RUN apk --no-cache --update add libffi-dev py-lxml openssl-dev bash py-cherrypy unrar unzip wget curl \
+RUN apk --no-cache --update add libffi-dev py-lxml openssl-dev py-cherrypy unrar unzip wget curl \
 	--update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted && \
 	pip install pyopenssl ndg-httpsclient
 
