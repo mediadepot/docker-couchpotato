@@ -1,41 +1,24 @@
-FROM debian:jessie
-MAINTAINER jason@thesparktree.com
-
-#Create internal depot user (which will be mapped to external DEPOT_USER, with the uid and gid values)
-RUN groupadd -g 15000 -r depot && useradd --uid 15000 -r -g depot depot
-
-#Install base applications + deps
-RUN echo "deb http://http.us.debian.org/debian stable main contrib non-free" | tee -a /etc/apt/sources.list
-RUN apt-get -q update && \
-    apt-get install -qy --force-yes git-core libffi-dev libssl-dev python python-cherrypy python-dev python-lxml python-pip python-cheetah unrar unzip curl && \
-    pip install pyopenssl ndg-httpsclient && \
-    apt-get -y autoremove  && \
-    apt-get -y clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    rm -rf /tmp/*
-
-#Create confd folder structure
-RUN curl -L -o /usr/local/bin/confd https://github.com/kelseyhightower/confd/releases/download/v0.11.0/confd-0.11.0-linux-amd64
-RUN chmod u+x  /usr/local/bin/confd
-ADD ./conf.d /etc/confd/conf.d
-ADD ./templates /etc/confd/templates
+FROM mediadepot/base:python
 
 #Create couchpotato folder structure & set as volumes
 RUN mkdir -p /srv/couchpotato/app && \
 	mkdir -p /srv/couchpotato/config && \
 	mkdir -p /srv/couchpotato/data
 
+WORKDIR /srv/couchpotato/app
 
-#Install Couchpotato
-RUN git clone https://github.com/RuudBurger/CouchPotatoServer.git /srv/couchpotato/app
+# Install permanent apk packages
+RUN apk --no-cache --update add libffi-dev py-lxml openssl-dev bash py-cherrypy unrar unzip wget curl \
+	--update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted && \
+	pip install pyopenssl ndg-httpsclient
 
-
-#Copy over start script and docker-gen files
+#start.sh will download the latest version of couchpotato and run it.
 ADD ./start.sh /srv/start.sh
 RUN chmod u+x  /srv/start.sh
+#
+VOLUME ["/srv/couchpotato/config", "/srv/couchpotato/data"]
 
-VOLUME ["/srv/couchpotato/app", "/srv/couchpotato/config", "/srv/couchpotato/data"]
+EXPOSE 5050
 
-EXPOSE 8080
-
-CMD ["/srv/start.sh"]
+#CMD ["/srv/start.sh"]
+CMD ["sh"]

@@ -1,9 +1,13 @@
-#!/usr/bin/env bash
-if [ ! -f /srv/couchpotato/config/couchpotato.cfg ]; then
-	#generate the config file for the first time using conf.d
+#!/usr/bin/env sh
 
-	confd -onetime -backend rancher -prefix /2015-07-25
-	chown -R depot:depot /srv/couchpotato
-fi
+#run the default config script
+sh /srv/config.sh
 
-su -c "/usr/bin/python /srv/couchpotato/app/CouchPotato.py --data_dir /srv/couchpotato/data --config_file /srv/couchpotato/config/couchpotato.cfg" depot
+#chown the couchpotato directory by the new user
+chown mediadepot:mediadepot -R /srv/couchpotato
+
+# download the latest version of CouchPotato
+su -c "git clone https://github.com/RuudBurger/CouchPotatoServer.git /srv/couchpotato/app" mediadepot
+
+# run CouchPotato
+su -c "/usr/bin/python /srv/couchpotato/app/CouchPotato.py --data_dir /srv/couchpotato/data --config_file /srv/couchpotato/config/couchpotato.cfg" mediadepot

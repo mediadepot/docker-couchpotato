@@ -1,9 +1,0 @@
-[template]
-src = "couchpotato.cfg.tmpl"
-dest = "/srv/couchpotato/config/couchpotato.cfg"
-keys = [
-	"/self/host/labels/depot.user",
-	"/self/host/labels/depot.password",
-	"/self/host/labels/depot.couchpotato.api_key",
-	"/self/host/labels/depot.pushover.api_key"
-]

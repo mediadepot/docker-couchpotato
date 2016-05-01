@@ -3,7 +3,7 @@
   "AttachStdin": true,
   "OpenStdin": true,
   "HostConfig": {
-    "PortBindings":{ "8080/tcp": [{ "HostIp": "0.0.0.0", "HostPort": "18080" }] }
+    "PortBindings":{ "5050/tcp": [{ "HostIp": "0.0.0.0", "HostPort": "18080" }] }
   },
   "Env": [
     "DEPOT_USER=depot",
