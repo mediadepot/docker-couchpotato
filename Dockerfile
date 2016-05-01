@@ -20,5 +20,4 @@ VOLUME ["/srv/couchpotato/config", "/srv/couchpotato/data"]
 
 EXPOSE 5050
 
-#CMD ["/srv/start.sh"]
-CMD ["sh"]
+CMD ["/srv/start.sh"]
